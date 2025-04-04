@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
 import FormField from '@/components/FormField';
+import DateInput from '@/components/DateInput';
+import BudgetInput from '@/components/BudgetInput';
 import TravelerCounter from '@/components/TravelerCounter';
 
 export default function TripFormScreen() {
@@ -21,16 +23,6 @@ export default function TripFormScreen() {
     if (travelers > 1) {
       setTravelers(prev => prev - 1);
     }
-  };
-
-  const handleDateSelect = (dateType: 'from' | 'to') => {
-    // In a real app, we would open a date picker here
-    Alert.alert('Date Selection', `Select ${dateType} date. This would open a date picker in a real app.`);
-  };
-
-  const handleBudgetPress = () => {
-    // In a real app, we would open a special budget selector
-    Alert.alert('Budget Selection', 'Select budget. This would open a budget selector in a real app.');
   };
 
   const handleSubmit = () => {
@@ -72,25 +64,22 @@ export default function TripFormScreen() {
           placeholder="Enter destination"
         />
         
-        <FormField
+        <DateInput
           label="From Date"
           value={fromDate}
-          inputType="select"
-          onPress={() => handleDateSelect('from')}
+          onChangeText={setFromDate}
         />
         
-        <FormField
+        <DateInput
           label="To Date"
           value={toDate}
-          inputType="select"
-          onPress={() => handleDateSelect('to')}
+          onChangeText={setToDate}
         />
         
-        <FormField
+        <BudgetInput
           label="Budget"
           value={budget}
-          inputType="select"
-          onPress={handleBudgetPress}
+          onChangeText={setBudget}
         />
         
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
