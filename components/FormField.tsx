@@ -1,18 +1,46 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 type FormFieldProps = {
   label: string;
   value: string;
-  onPress: () => void;
+  onChangeText?: (text: string) => void;
+  onPress?: () => void;
+  placeholder?: string;
+  editable?: boolean;
+  inputType?: 'text' | 'select';
 };
 
-const FormField = ({ label, value, onPress }: FormFieldProps) => {
+const FormField = ({ 
+  label, 
+  value, 
+  onChangeText, 
+  onPress, 
+  placeholder = '', 
+  editable = true,
+  inputType = 'text'
+}: FormFieldProps) => {
+  
+  if (inputType === 'select') {
+    return (
+      <TouchableOpacity style={styles.container} onPress={onPress}>
+        <Text style={styles.label}>{label}</Text>
+        <Text style={styles.value}>{value || placeholder}</Text>
+      </TouchableOpacity>
+    );
+  }
+
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
-    </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        value={value}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        editable={editable}
+      />
+    </View>
   );
 };
 
@@ -40,6 +68,14 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#000000',
     textAlign: 'center',
+  },
+  input: {
+    fontFamily: 'System',
+    fontWeight: '700',
+    fontSize: 25,
+    color: '#000000',
+    textAlign: 'center',
+    width: '100%',
   },
 });
 

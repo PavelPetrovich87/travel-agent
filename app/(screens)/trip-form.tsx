@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
 import FormField from '@/components/FormField';
@@ -7,8 +7,8 @@ import TravelerCounter from '@/components/TravelerCounter';
 
 export default function TripFormScreen() {
   const [travelers, setTravelers] = useState(1);
-  const [fromCity, setFromCity] = useState('New York City');
-  const [toCity, setToCity] = useState('Paris');
+  const [fromCity, setFromCity] = useState('');
+  const [toCity, setToCity] = useState('');
   const [fromDate, setFromDate] = useState('2023-11-24');
   const [toDate, setToDate] = useState('2023-12-05');
   const [budget, setBudget] = useState('$ 5000');
@@ -21,6 +21,16 @@ export default function TripFormScreen() {
     if (travelers > 1) {
       setTravelers(prev => prev - 1);
     }
+  };
+
+  const handleDateSelect = (dateType: 'from' | 'to') => {
+    // In a real app, we would open a date picker here
+    Alert.alert('Date Selection', `Select ${dateType} date. This would open a date picker in a real app.`);
+  };
+
+  const handleBudgetPress = () => {
+    // In a real app, we would open a special budget selector
+    Alert.alert('Budget Selection', 'Select budget. This would open a budget selector in a real app.');
   };
 
   const handleSubmit = () => {
@@ -51,31 +61,36 @@ export default function TripFormScreen() {
         <FormField
           label="Flying from"
           value={fromCity}
-          onPress={() => {}}
+          onChangeText={setFromCity}
+          placeholder="Enter city or airport"
         />
         
         <FormField
           label="Flying to"
           value={toCity}
-          onPress={() => {}}
+          onChangeText={setToCity}
+          placeholder="Enter destination"
         />
         
         <FormField
           label="From Date"
           value={fromDate}
-          onPress={() => {}}
+          inputType="select"
+          onPress={() => handleDateSelect('from')}
         />
         
         <FormField
           label="To Date"
           value={toDate}
-          onPress={() => {}}
+          inputType="select"
+          onPress={() => handleDateSelect('to')}
         />
         
         <FormField
           label="Budget"
           value={budget}
-          onPress={() => {}}
+          inputType="select"
+          onPress={handleBudgetPress}
         />
         
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
