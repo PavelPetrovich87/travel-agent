@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
-import FormField from '../../src/components/FormField';
-import TravelerCounter from '../../src/components/TravelerCounter';
+import FormField from '@/components/FormField';
+import TravelerCounter from '@/components/TravelerCounter';
 
 export default function TripFormScreen() {
   const [travelers, setTravelers] = useState(1);

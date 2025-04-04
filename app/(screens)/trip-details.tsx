@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useLocalSearchParams } from 'expo-router';
-import InfoCard from '../../src/components/InfoCard';
-import DateCard from '../../src/components/DateCard';
+import InfoCard from '@/components/InfoCard';
+import DateCard from '@/components/DateCard';
 
 export default function TripDetailsScreen() {
   const params = useLocalSearchParams();
