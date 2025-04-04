@@ -1,6 +1,87 @@
-# Welcome to your Expo app 👋
+# Travel Agent App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native Expo application for planning trips based on the Figma design.
+
+## Features
+
+- Welcome screen with travel background
+- Trip planning form with:
+  - Number of travelers selector
+  - Origin and destination inputs
+  - Date range selection
+  - Budget selection
+- Trip details screen showing:
+  - Travel itinerary with dates
+  - Weather information
+  - Flight recommendations
+  - Hotel recommendations
+  - Booking options
+
+## Setup Instructions
+
+1. Make sure you have Node.js and npm installed
+2. Install Expo CLI globally:
+   ```
+   npm install -g expo-cli
+   ```
+3. Clone this repository
+4. Navigate to the project directory:
+   ```
+   cd travel-agent
+   ```
+5. Install dependencies:
+   ```
+   npm install
+   ```
+6. Start the development server:
+   ```
+   npm start
+   ```
+7. Run on a physical device with the Expo Go app or run on an emulator/simulator
+
+## Screens
+
+### Welcome Screen
+The initial screen showing a background image with a "Let's Begin" button.
+
+### Trip Form Screen
+A form for users to input trip details including:
+- Number of travelers
+- Origin and destination
+- Travel dates
+- Budget
+
+### Trip Details Screen
+Displays the trip details and recommendations:
+- Trip overview
+- Weather information
+- Flight recommendations with booking option
+- Hotel recommendations with booking option
+
+## Notes
+
+This app currently includes only the UI components, with dummy data and placeholder functions. Backend integration for real data and booking functionality will be implemented in future versions.
+
+## Project Structure
+
+```
+/travel-agent
+  /assets
+    travel-background.jpg
+  /src
+    /components
+      DateCard.js
+      FormField.js
+      InfoCard.js
+      TravelerCounter.js
+    /navigation
+      AppNavigator.js
+    /screens
+      WelcomeScreen.js
+      TripFormScreen.js
+      TripDetailsScreen.js
+  App.js
+```
 
 ## Get started
 

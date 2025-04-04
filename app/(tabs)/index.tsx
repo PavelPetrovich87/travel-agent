@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+import { router } from 'expo-router';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -16,39 +16,28 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">Travel Agent</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+      
+      <ThemedView style={styles.descriptionContainer}>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+          Plan your perfect trip with our AI-powered travel agent. Select destinations, dates, and budget to get customized recommendations.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+      
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => router.push('/(screens)/trip-form')}
+      >
+        <Text style={styles.buttonText}>Start Planning</Text>
+      </TouchableOpacity>
+      
+      <ThemedView style={styles.featuresContainer}>
+        <ThemedText type="subtitle">Features</ThemedText>
+        <ThemedText>• Customized trip planning</ThemedText>
+        <ThemedText>• Flight and hotel recommendations</ThemedText>
+        <ThemedText>• Weather information</ThemedText>
+        <ThemedText>• Budget-friendly options</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -56,13 +45,30 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    marginBottom: 16,
   },
-  stepContainer: {
+  descriptionContainer: {
+    marginBottom: 24,
+  },
+  button: {
+    backgroundColor: '#4BDCB0',
+    borderRadius: 40,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderWidth: 2,
+    borderColor: '#000000',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  buttonText: {
+    fontFamily: 'System',
+    fontWeight: '700',
+    fontSize: 18,
+    color: '#000000',
+  },
+  featuresContainer: {
     gap: 8,
-    marginBottom: 8,
   },
   reactLogo: {
     height: 178,
